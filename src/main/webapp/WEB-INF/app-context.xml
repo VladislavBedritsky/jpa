@@ -65,6 +65,15 @@
         <property name="password" value="${jdbc.pass}" />
     </bean>
 
+    <bean id="dataSourceInitializer" class="org.springframework.jdbc.datasource.init.DataSourceInitializer" >
+        <property name="dataSource" ref="dataSource" />
+        <property name="databasePopulator" ref="dbPopulator" />
+    </bean>
+
+    <bean id="dbPopulator" class="org.springframework.jdbc.datasource.init.ResourceDatabasePopulator" >
+        <property name="scripts" value="classpath:data.sql" />
+    </bean>
+
     <bean id="templateResolver"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/templates/" />
