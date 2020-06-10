@@ -49,7 +49,7 @@
 
     <bean id="templateResolver"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/templates/" />
+        <property name="prefix" value="/templates/" />
         <property name="suffix" value=".jsp" />
     </bean>
 
