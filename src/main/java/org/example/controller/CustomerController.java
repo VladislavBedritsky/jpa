@@ -1,5 +1,6 @@
 package org.example.controller;
 
+import org.example.domain.Customer;
 import org.example.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,13 @@ public class CustomerController {
     public String findAll(Model model) {
         model.addAttribute("customers", customerService.findAll());
         return "index";
+    }
+
+    @GetMapping
+    public String getNewCustomer(Model model) {
+        Customer customer = new Customer();
+        model.addAttribute("customer", customer);
+        return "new_customer";
     }
 
 }
