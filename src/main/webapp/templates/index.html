@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Manager</title>
+</head>
+<body>
+<div align="center">
+    <h2>Customer Manager</h2>
+    <form method="get" action="search">
+        <input type="text" name="keyword" />
+        <input type="submit" value="Search" />
+    </form>
+    <h3><a href="/new">New Customer</a></h3>
+    <table border="1" cellpadding="5">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>E-mail</th>
+            <th>Address</th>
+            <th>Action</th>
+        </tr>
+            <tr th:each="customer:${customers}">
+                <td th:text="${customer.id}"></td>
+                <td th:text="${customer.name}"></td>
+                <td th:text="${customer.email}"></td>
+                <td th:text="${customer.address}"></td>
+                <td>
+                    <a th:href="@{/edit?{id}(id=${customer.id})}">Edit</a>
+
+                    <a th:href="@{/edit?{id}(id=${customer.id})}">Delete</a>
+                </td>
+            </tr>
+    </table>
+</div>
+</body>
