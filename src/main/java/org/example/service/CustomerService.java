@@ -31,4 +31,8 @@ public class CustomerService {
         customerRepository.deleteById(id);
     }
 
+    public List<Customer> findCustomerByKeyword(String keyword) {
+        return customerRepository.findCustomerByKeyword(keyword);
+    }
+
 }

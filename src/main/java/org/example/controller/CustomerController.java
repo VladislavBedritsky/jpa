@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/")
 public class CustomerController {
@@ -46,6 +48,15 @@ public class CustomerController {
     public String deleteCustomerForm(@RequestParam Long id) {
         customerService.delete(id);
         return "redirect:/";
+    }
+
+    @GetMapping("/search")
+    public String search(
+            Model model,
+            @RequestParam String keyword) {
+        List<Customer> customers = customerService.findCustomerByKeyword(keyword);
+        model.addAttribute("customers", customers);
+        return "search";
     }
 
 
