@@ -5,10 +5,7 @@ import org.example.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/")
@@ -34,6 +31,15 @@ public class CustomerController {
     public String saveCustomer(@ModelAttribute("customer") Customer customer) {
         customerService.save(customer);
         return "redirect:/";
+    }
+
+    @GetMapping("/edit")
+    public String updateCustomer(
+            Model model,
+            @RequestParam Long id) {
+        Customer customer = customerService.findById(id);
+        model.addAttribute("customer", customer);
+        return "edit_customer";
     }
 
 }

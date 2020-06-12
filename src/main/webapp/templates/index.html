@@ -26,7 +26,7 @@
                 <td th:text="${customer.email}"></td>
                 <td th:text="${customer.address}"></td>
                 <td>
-                    <a th:href="@{/edit?{id}(id=${customer.id})}">Edit</a>
+                    <a th:href="@{/edit?id={id}(id=${customer.id})}">Edit</a>
 
                     <a th:href="@{/edit?{id}(id=${customer.id})}">Delete</a>
                 </td>
